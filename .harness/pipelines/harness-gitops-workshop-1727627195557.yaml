@@ -14,11 +14,23 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Echo Welcome Message
+                  name: Run with Test
                   identifier: Echo_Welcome_Message
                   spec:
+                    connectorRef: account.harnessImage
+                    image: golang
                     shell: Sh
-                    command: echo "Welcome to Harness CI"
+                    command: |-
+                      set -e
+
+                      # build the docker file
+                      GIT_COMMIT=$(git rev-list -1 HEAD) && \
+                      DOCKER_BUILDKIT=1 docker build --tag test/podinfo --build-arg "REVISION=${GIT_COMMIT}" .
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "*.xml"
           platform:
             os: Linux
             arch: Amd64
