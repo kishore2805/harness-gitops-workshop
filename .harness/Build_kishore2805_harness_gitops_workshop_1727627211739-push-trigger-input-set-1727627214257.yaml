@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_kishore2805_harness_gitops_workshop_1727627211739-push-trigger-input-set
+  identifier: Build_kishore2805_harness_gitops_workshop_1727627211739pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Dev
+  pipeline:
+    identifier: Build_kishore2805_harness_gitops_workshop_1727627211739
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
