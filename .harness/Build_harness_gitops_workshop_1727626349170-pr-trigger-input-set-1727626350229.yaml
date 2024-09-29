@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_gitops_workshop_1727626349170-pr-trigger-input-set
+  identifier: Build_harness_gitops_workshop_1727626349170prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_harness_gitops_workshop_1727626349170
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
